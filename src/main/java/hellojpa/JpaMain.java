@@ -19,10 +19,21 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member();
-            member.setUsername("D");
+            Team team = new Team();
+            team.setName("TeamA");
+            // team.getMembers().add(member);
+            em.persist(team);
 
+            Member member = new Member();
+            member.setUsername("member1");
             em.persist(member);
+
+            team.addMember(member);
+
+            em.flush();
+            em.clear();
+
+
 
             tx.commit();
         } catch (Exception e) {
