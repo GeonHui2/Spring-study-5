@@ -19,13 +19,8 @@ public class JpaMain {
 
         try {
 
-            Movie movie = new Movie();
-            movie.setDirector("aa");
-            movie.setActor("bbb");
-            movie.setName("바람과함께사라지다");
-            movie.setPrice(10000);
-
-            em.persist(movie);
+            Member member = em.find(Member.class, 1L);
+            printMemberAndTeam(member);
 
             tx.commit();
         } catch (Exception e) {
@@ -35,5 +30,14 @@ public class JpaMain {
         }
 
         enf.close();
+    }
+
+    private static void printMemberAndTeam(Member member) {
+
+        String username = member.getUsername();
+        System.out.println("username = " + username);
+
+        Team team = member.getTeam();
+        System.out.println("team = " + team);
     }
 }
