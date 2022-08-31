@@ -33,6 +33,7 @@ public class Address {
 
     public String getZipcode() {
         return zipcode;
+        
     }
 
     public void setZipcode(String zipcode) {
